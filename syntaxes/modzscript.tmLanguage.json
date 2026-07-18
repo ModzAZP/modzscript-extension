@@ -1,0 +1,388 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "ModzScript",
+  "scopeName": "source.modzscript",
+  "fileTypes": ["ms"],
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#imports-exports" },
+    { "include": "#class-declaration" },
+    { "include": "#function-declaration" },
+    { "include": "#keywords" },
+    { "include": "#constants" },
+    { "include": "#numbers" },
+    { "include": "#strings" },
+    { "include": "#regex" },
+    { "include": "#write-call" },
+    { "include": "#function-call" },
+    { "include": "#property-access" },
+    { "include": "#operators" },
+    { "include": "#punctuation" },
+    { "include": "#identifiers" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.ms",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.ms",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+
+    "imports-exports": {
+      "patterns": [
+        {
+          "match": "\\b(import|export)\\b",
+          "name": "keyword.control.import.ms"
+        },
+        {
+          "match": "\\b(from|as|default)\\b",
+          "name": "keyword.control.import.ms"
+        }
+      ]
+    },
+
+    "class-declaration": {
+      "patterns": [
+        {
+          "match": "\\b(class)\\s+([A-Za-z_$][A-Za-z0-9_$]*)",
+          "captures": {
+            "1": { "name": "storage.type.class.ms" },
+            "2": { "name": "entity.name.class.ms" }
+          }
+        },
+        {
+          "match": "\\b(inherit)\\s+([A-Za-z_$][A-Za-z0-9_$]*)",
+          "captures": {
+            "1": { "name": "keyword.control.class.inherit.ms" },
+            "2": { "name": "entity.other.inherited-class.ms" }
+          }
+        },
+        {
+          "match": "\\b(create)\\s+([A-Za-z_$][A-Za-z0-9_$.]*)\\s*(?=\\()",
+          "captures": {
+            "1": { "name": "keyword.operator.new.ms" },
+            "2": { "name": "entity.name.class.ms" }
+          }
+        },
+        {
+          "match": "\\b(static)\\b",
+          "name": "storage.modifier.ms"
+        },
+        {
+          "match": "(?<![.\\w])(get|set)(?=\\s+[A-Za-z_$])",
+          "name": "storage.modifier.accessor.ms"
+        }
+      ]
+    },
+
+    "function-declaration": {
+      "patterns": [
+        {
+          "match": "\\b(swift)\\s+(func)\\b\\s*(\\*)?\\s*([A-Za-z_$][A-Za-z0-9_$]*)?",
+          "captures": {
+            "1": { "name": "storage.modifier.async.ms" },
+            "2": { "name": "storage.type.function.ms" },
+            "3": { "name": "keyword.operator.generator.ms" },
+            "4": { "name": "entity.name.function.ms" }
+          }
+        },
+        {
+          "match": "\\b(func)\\b\\s*(\\*)?\\s*([A-Za-z_$][A-Za-z0-9_$]*)?",
+          "captures": {
+            "1": { "name": "storage.type.function.ms" },
+            "2": { "name": "keyword.operator.generator.ms" },
+            "3": { "name": "entity.name.function.ms" }
+          }
+        }
+      ]
+    },
+
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.conditional.ms",
+          "match": "\\b(check|next|backup|select|option|other)\\b"
+        },
+        {
+          "name": "keyword.control.loop.ms",
+          "match": "\\b(while|repeat|loop|for|of|in|stop|skip)\\b"
+        },
+        {
+          "name": "keyword.control.exception.ms",
+          "match": "\\b(attempt|panic|rescue|finish)\\b"
+        },
+        {
+          "name": "keyword.control.flow.ms",
+          "match": "\\b(back)\\b"
+        },
+        {
+          "name": "storage.modifier.ms",
+          "match": "\\b(core|data)\\b"
+        },
+        {
+          "name": "storage.modifier.async.ms",
+          "match": "\\b(swift|wait)\\b"
+        },
+        {
+          "name": "keyword.control.yield.ms",
+          "match": "\\b(yield)\\b"
+        },
+        {
+          "name": "variable.language.self.ms",
+          "match": "\\b(self)\\b"
+        },
+        {
+          "name": "variable.language.super.ms",
+          "match": "\\b(parent)\\b"
+        },
+        {
+          "name": "keyword.operator.instanceof.ms",
+          "match": "\\b(instance)\\b"
+        },
+        {
+          "name": "keyword.operator.typeof.ms",
+          "match": "\\b(type)\\b"
+        },
+        {
+          "name": "keyword.operator.delete.ms",
+          "match": "\\b(remove)\\b"
+        },
+        {
+          "name": "keyword.operator.void.ms",
+          "match": "\\b(void)\\b"
+        },
+        {
+          "name": "keyword.other.debugger.ms",
+          "match": "\\b(debug)\\b"
+        }
+      ]
+    },
+
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.ms",
+          "match": "\\b(true|false)\\b"
+        },
+        {
+          "name": "constant.language.null.ms",
+          "match": "\\b(null|undefined)\\b"
+        }
+      ]
+    },
+
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hex.ms",
+          "match": "\\b0[xX][0-9a-fA-F_]+n?\\b"
+        },
+        {
+          "name": "constant.numeric.octal.ms",
+          "match": "\\b0[oO][0-7_]+n?\\b"
+        },
+        {
+          "name": "constant.numeric.binary.ms",
+          "match": "\\b0[bB][01_]+n?\\b"
+        },
+        {
+          "name": "constant.numeric.bigint.ms",
+          "match": "\\b[0-9][0-9_]*n\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.ms",
+          "match": "\\b[0-9][0-9_]*(\\.[0-9_]+)?([eE][+-]?[0-9]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.ms",
+          "match": "\\.[0-9][0-9_]*([eE][+-]?[0-9]+)?\\b"
+        }
+      ]
+    },
+
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.ms",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [{ "name": "constant.character.escape.ms", "match": "\\\\." }]
+        },
+        {
+          "name": "string.quoted.single.ms",
+          "begin": "'",
+          "end": "'",
+          "patterns": [{ "name": "constant.character.escape.ms", "match": "\\\\." }]
+        },
+        {
+          "name": "string.template.ms",
+          "begin": "`",
+          "end": "`",
+          "patterns": [
+            { "name": "constant.character.escape.ms", "match": "\\\\." },
+            {
+              "name": "meta.embedded.line.ms",
+              "begin": "\\$\\{",
+              "end": "\\}",
+              "beginCaptures": { "0": { "name": "punctuation.definition.template-expression.begin.ms" } },
+              "endCaptures": { "0": { "name": "punctuation.definition.template-expression.end.ms" } },
+              "patterns": [
+                { "include": "#keywords" },
+                { "include": "#constants" },
+                { "include": "#numbers" },
+                { "include": "#strings" },
+                { "include": "#function-call" },
+                { "include": "#property-access" },
+                { "include": "#operators" },
+                { "include": "#punctuation" },
+                { "include": "#identifiers" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    "regex": {
+      "patterns": [
+        {
+          "name": "string.regexp.ms",
+          "begin": "(?<=[=(:,\\[!&|?{};]|^|return|back|wait|panic)\\s*/(?![/*])",
+          "end": "/[a-z]*",
+          "patterns": [
+            { "name": "constant.character.escape.ms", "match": "\\\\." },
+            {
+              "name": "constant.other.character-class.regexp.ms",
+              "begin": "\\[",
+              "end": "\\]",
+              "patterns": [{ "name": "constant.character.escape.ms", "match": "\\\\." }]
+            }
+          ]
+        }
+      ]
+    },
+
+    "write-call": {
+      "patterns": [
+        {
+          "match": "\\b(write)\\b(\\.(error|warn|info|debug|log|table|group|groupEnd|trace|assert|time|timeEnd|dir|count))?",
+          "captures": {
+            "1": { "name": "support.function.write.ms" },
+            "3": { "name": "support.function.write.member.ms" }
+          }
+        }
+      ]
+    },
+
+    "function-call": {
+      "patterns": [
+        {
+          "match": "\\b([A-Za-z_$][A-Za-z0-9_$]*)\\s*(?=\\()",
+          "name": "entity.name.function.call.ms"
+        }
+      ]
+    },
+
+    "property-access": {
+      "patterns": [
+        {
+          "match": "(\\.|\\?\\.)\\s*([A-Za-z_$][A-Za-z0-9_$]*)",
+          "captures": {
+            "1": { "name": "punctuation.accessor.ms" },
+            "2": { "name": "variable.other.property.ms" }
+          }
+        }
+      ]
+    },
+
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.arrow.ms",
+          "match": "=>"
+        },
+        {
+          "name": "keyword.operator.spread.ms",
+          "match": "\\.\\.\\."
+        },
+        {
+          "name": "keyword.operator.optional-chain.ms",
+          "match": "\\?\\."
+        },
+        {
+          "name": "keyword.operator.nullish.ms",
+          "match": "\\?\\?=?"
+        },
+        {
+          "name": "keyword.operator.logical.ms",
+          "match": "(&&=?|\\|\\|=?|!)"
+        },
+        {
+          "name": "keyword.operator.comparison.ms",
+          "match": "(===|!==|==|!=|<=|>=|<|>)"
+        },
+        {
+          "name": "keyword.operator.assignment.compound.ms",
+          "match": "(\\+=|-=|\\*=|/=|%=|\\*\\*=|<<=|>>=|>>>=|&=|\\|=|\\^=)"
+        },
+        {
+          "name": "keyword.operator.assignment.ms",
+          "match": "="
+        },
+        {
+          "name": "keyword.operator.arithmetic.ms",
+          "match": "(\\*\\*|\\+\\+|--|\\+|-|\\*|/|%)"
+        },
+        {
+          "name": "keyword.operator.bitwise.ms",
+          "match": "(>>>|<<|>>|&|\\||\\^|~)"
+        },
+        {
+          "name": "keyword.operator.ternary.ms",
+          "match": "(\\?|:)"
+        }
+      ]
+    },
+
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.terminator.statement.ms",
+          "match": ";"
+        },
+        {
+          "name": "punctuation.separator.comma.ms",
+          "match": ","
+        },
+        {
+          "name": "punctuation.section.braces.ms",
+          "match": "[{}]"
+        },
+        {
+          "name": "punctuation.section.brackets.ms",
+          "match": "[\\[\\]]"
+        },
+        {
+          "name": "punctuation.section.parens.ms",
+          "match": "[()]"
+        }
+      ]
+    },
+
+    "identifiers": {
+      "patterns": [
+        {
+          "name": "variable.other.readwrite.ms",
+          "match": "[A-Za-z_$][A-Za-z0-9_$]*"
+        }
+      ]
+    }
+  }
+}

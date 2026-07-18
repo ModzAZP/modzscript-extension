@@ -1,0 +1,38 @@
+{
+  "name": "modzscript-language",
+  "displayName": "ModzScript Language Support",
+  "description": "Syntax highlighting for ModzScript (.ms) with a bright neon color theme.",
+  "version": "1.0.0",
+  "publisher": "ModzAZP",
+  "engines": { 
+    "vscode": "^1.75.0" 
+  },
+  "categories": [
+    "Programming Languages", 
+    "Themes"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "modzscript",
+        "aliases": ["ModzScript", "modzscript", "ms"],
+        "extensions": [".ms"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "modzscript",
+        "scopeName": "source.modzscript",
+        "path": "./syntaxes/modzscript.tmLanguage.json"
+      }
+    ],
+    "themes": [
+      {
+        "label": "ModzScript Neon Bright",
+        "uiTheme": "vs-dark",
+        "path": "./themes/modzscript-neon-bright-color-theme.json"
+      }
+    ]
+  }
+}

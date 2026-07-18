@@ -1,0 +1,196 @@
+{
+  "$schema": "vscode://schemas/color-theme",
+  "name": "ModzScript Neon Bright",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#0D0221",
+    "editor.foreground": "#F4F1FF",
+    "editorLineNumber.foreground": "#5A4B8C",
+    "editorLineNumber.activeForeground": "#FF2E88",
+    "editorCursor.foreground": "#00FFC8",
+    "editor.selectionBackground": "#4A2A7A",
+    "editor.lineHighlightBackground": "#1A0B33",
+    "editorIndentGuide.background": "#2A1B4D",
+    "editorIndentGuide.activeBackground": "#5A2A9D",
+    "editorBracketMatch.background": "#3A1B6D",
+    "editorBracketMatch.border": "#FF2E88",
+    "editorWhitespace.foreground": "#2A1B4D",
+    "statusBar.background": "#1A0B33",
+    "statusBar.foreground": "#F4F1FF",
+    "activityBar.background": "#0D0221",
+    "sideBar.background": "#100327",
+    "titleBar.activeBackground": "#0D0221",
+    "terminal.background": "#0D0221"
+  },
+  "tokenColors": [
+    {
+      "name": "Comments",
+      "scope": ["comment", "comment.line.double-slash.ms", "comment.block.ms"],
+      "settings": { "foreground": "#7A6FA8", "fontStyle": "italic" }
+    },
+    {
+      "name": "Conditional keywords (check/next/backup/select/option/other)",
+      "scope": "keyword.control.conditional.ms",
+      "settings": { "foreground": "#FF2E88", "fontStyle": "bold" }
+    },
+    {
+      "name": "Loop keywords",
+      "scope": "keyword.control.loop.ms",
+      "settings": { "foreground": "#FF8800", "fontStyle": "bold" }
+    },
+    {
+      "name": "Exception keywords",
+      "scope": "keyword.control.exception.ms",
+      "settings": { "foreground": "#FF3838", "fontStyle": "bold" }
+    },
+    {
+      "name": "back (return)",
+      "scope": "keyword.control.flow.ms",
+      "settings": { "foreground": "#FF2E88", "fontStyle": "bold" }
+    },
+    {
+      "name": "yield",
+      "scope": "keyword.control.yield.ms",
+      "settings": { "foreground": "#FF61E6", "fontStyle": "bold italic" }
+    },
+    {
+      "name": "import/export/from/as/default",
+      "scope": "keyword.control.import.ms",
+      "settings": { "foreground": "#FF2E88", "fontStyle": "bold" }
+    },
+    {
+      "name": "core / data",
+      "scope": "storage.modifier.ms",
+      "settings": { "foreground": "#00E5FF", "fontStyle": "bold" }
+    },
+    {
+      "name": "swift / wait",
+      "scope": "storage.modifier.async.ms",
+      "settings": { "foreground": "#C77DFF", "fontStyle": "bold italic" }
+    },
+    {
+      "name": "func / class",
+      "scope": ["storage.type.function.ms", "storage.type.class.ms"],
+      "settings": { "foreground": "#00E5FF", "fontStyle": "bold" }
+    },
+    {
+      "name": "static / accessor",
+      "scope": ["storage.modifier.ms", "storage.modifier.accessor.ms"],
+      "settings": { "foreground": "#C77DFF", "fontStyle": "bold" }
+    },
+    {
+      "name": "inherit keyword",
+      "scope": "keyword.control.class.inherit.ms",
+      "settings": { "foreground": "#FF2E88", "fontStyle": "bold" }
+    },
+    {
+      "name": "create (new)",
+      "scope": "keyword.operator.new.ms",
+      "settings": { "foreground": "#FF8800", "fontStyle": "bold" }
+    },
+    {
+      "name": "self / parent",
+      "scope": ["variable.language.self.ms", "variable.language.super.ms"],
+      "settings": { "foreground": "#FF6EC7", "fontStyle": "bold italic" }
+    },
+    {
+      "name": "type / instance / remove / void",
+      "scope": [
+        "keyword.operator.instanceof.ms",
+        "keyword.operator.typeof.ms",
+        "keyword.operator.delete.ms",
+        "keyword.operator.void.ms",
+        "keyword.other.debugger.ms"
+      ],
+      "settings": { "foreground": "#FF8800", "fontStyle": "bold" }
+    },
+    {
+      "name": "Booleans / null / undefined",
+      "scope": ["constant.language.boolean.ms", "constant.language.null.ms"],
+      "settings": { "foreground": "#D264FF", "fontStyle": "bold" }
+    },
+    {
+      "name": "Numbers",
+      "scope": "constant.numeric.ms",
+      "settings": { "foreground": "#FFB300", "fontStyle": "bold" }
+    },
+    {
+      "name": "Strings",
+      "scope": ["string.quoted.double.ms", "string.quoted.single.ms", "string.template.ms"],
+      "settings": { "foreground": "#39FF14" }
+    },
+    {
+      "name": "Template interpolation punctuation",
+      "scope": [
+        "punctuation.definition.template-expression.begin.ms",
+        "punctuation.definition.template-expression.end.ms"
+      ],
+      "settings": { "foreground": "#FFE800", "fontStyle": "bold" }
+    },
+    {
+      "name": "Escape sequences",
+      "scope": "constant.character.escape.ms",
+      "settings": { "foreground": "#FFE800" }
+    },
+    {
+      "name": "Regex",
+      "scope": "string.regexp.ms",
+      "settings": { "foreground": "#FF5FA2" }
+    },
+    {
+      "name": "write() logging keyword",
+      "scope": ["support.function.write.ms", "support.function.write.member.ms"],
+      "settings": { "foreground": "#00FFC8", "fontStyle": "bold" }
+    },
+    {
+      "name": "Class names",
+      "scope": ["entity.name.class.ms", "entity.other.inherited-class.ms"],
+      "settings": { "foreground": "#FFEE00", "fontStyle": "bold" }
+    },
+    {
+      "name": "Function names",
+      "scope": ["entity.name.function.ms", "entity.name.function.call.ms"],
+      "settings": { "foreground": "#00FFC8" }
+    },
+    {
+      "name": "Properties",
+      "scope": "variable.other.property.ms",
+      "settings": { "foreground": "#8BE9FD" }
+    },
+    {
+      "name": "Variables",
+      "scope": "variable.other.readwrite.ms",
+      "settings": { "foreground": "#F4F1FF" }
+    },
+    {
+      "name": "Operators",
+      "scope": "keyword.operator",
+      "settings": { "foreground": "#FF79C6", "fontStyle": "bold" }
+    },
+    {
+      "name": "Arrow / spread / optional-chain / nullish",
+      "scope": [
+        "keyword.operator.arrow.ms",
+        "keyword.operator.spread.ms",
+        "keyword.operator.optional-chain.ms",
+        "keyword.operator.nullish.ms"
+      ],
+      "settings": { "foreground": "#00FFC8", "fontStyle": "bold" }
+    },
+    {
+      "name": "Punctuation",
+      "scope": ["punctuation.section.braces.ms", "punctuation.section.brackets.ms", "punctuation.section.parens.ms"],
+      "settings": { "foreground": "#B4A9D6" }
+    },
+    {
+      "name": "Accessor dot",
+      "scope": "punctuation.accessor.ms",
+      "settings": { "foreground": "#FF79C6" }
+    },
+    {
+      "name": "Statement terminator / comma",
+      "scope": ["punctuation.terminator.statement.ms", "punctuation.separator.comma.ms"],
+      "settings": { "foreground": "#7A6FA8" }
+    }
+  ]
+}
